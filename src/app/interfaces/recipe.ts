@@ -1,13 +1,16 @@
 import { IUser } from "./user";
 
 export interface IRecipe{
-    title:string,
+    
+
+}
+
+/*
+title:string,
     imageUrl:string,
     description:string;
     prepTime:string;
     cookTime:string;
     ingredients:string;
     owner: IUser;
-    users:string[];
-
-}
+    users:string[];*/

@@ -11,13 +11,12 @@ export class ApiService {
 
   constructor(private httpClient: HttpClient) { }
 
-  loadRecipes(){
-    return this.httpClient.get<IRecipe>(`${apiURL}/recipes`)
-  }
-
-  loadRecentRecipes(limit?:number){
-    return this.httpClient.get<IRecipe>(`apiURL/recipes${limit ? `?limit=${limit}`:''}`)
-  }
 
   
+
+ 
+
+  loadRecipes(limit?:number){
+    return this.httpClient.get<IRecipe>(`apiURL/recipes${limit ? `?limit=${limit}`:''}`)
+  }
 }

@@ -1,23 +1,25 @@
-      <div class="nav-center">
-        <div class="nav-header">
-          <!--home link ADD-->
-          <a href="/" class="nav-logo">
-            <img src="../../../assets/logo.png" alt="simply recipes" />
-          </a>
-          
-        </div>
-        
-        <div class="nav-links">
-          <a href="index.html" class="nav-link"> home </a>
-          <a href="about.html" class="nav-link"> about </a>
-          <a href="recipes.html" class="nav-link"> recipes </a>
-          <a href="tags.html" class="nav-link"> add new recipe </a>
+<div class="nav-center">
+  <div class="nav-header">
+    <!--home link ADD-->
+    <a href="/" class="nav-logo">
+      <img src="../../../assets/logo.png" alt="simply recipes" />
+    </a>
+  </div>
 
+  <div class="nav-links">
+    <a routerLink="/" class="nav-link"> home </a>
+    <a routerLink="/about" class="nav-link"> about </a>
+    <a routerLink="/catalog" class="nav-link"> recipes </a>
+    <a routerLink="" class="nav-link"> add new recipe </a>
 
-          <div class="contact-link">
-            <a href="contact.html" class="btn"> LOGIN </a>
-            <a href="contact.html" class="btn"> REGISTER </a>
-            <a href="contact.html" class="btn"> LOGOUT </a>
-          </div>
-        </div>
+    <div class="contact-link" *ngIf="!isLoggedIn">
+        <a routerLink="/auth/login" class="btn"> LOGIN </a>
+        <a routerLink="/auth/register" class="btn"> REGISTER </a>
       </div>
+      
+    <div class="contact-link" *ngIf="isLoggedIn">
+        <a routerLink="/auth/profile" class="btn">{{user?.username}}'s' profile </a>
+        <a routerLink="/auth/logout" class="btn"> LOGOUT </a>    
+    </div>
+  </div>
+</div>

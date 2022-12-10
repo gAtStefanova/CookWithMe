@@ -1,0 +1,29 @@
+<section id="container">
+    <div class="container-info">
+        <!-- Do not forget to change the path to the image -->
+     
+
+        <form action="/auth/register" method="post" class="container-text">
+            <h2>Register Page</h2>
+
+            <label for="username">Username:</label>
+            <input class="input-box" type="text" id="username" placeholder="Enter your name" name="username" >
+            <label for="username">Email:</label>
+            <input class="input-box" type="text" id="username" placeholder="Enter your email" name="username" >
+            <label for="password">Password:</label>
+            <input class="input-box" type="password" id="password" placeholder="*****" name="password">
+
+            <label for="re-password">Repeat password:</label>
+            <input class="input-box" type="password" id="re-password" placeholder="*****" name="repass">
+
+            
+
+            <button class="btn">Register</button>
+            <div class="card-no-account">
+                <a routerLink="/auth/login"><p>Already have an account? Sign in</p></a>
+            </div>
+
+        </form>
+    </div>
+
+</section>

@@ -10,8 +10,11 @@ export class RecipesListComponent implements OnInit {
  
   constructor(private apiService:ApiService){}
 
-
   ngOnInit(): void {
- //   this.apiService.loadRecipes().subscribe(()=>{   })
+    this.apiService.loadRecipes().subscribe((value)=>{
+      console.log(value);
+      
+    })  
   }
+  
 }

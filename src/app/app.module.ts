@@ -8,6 +8,7 @@ import { RecipesListComponent } from './recipes-list/recipes-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MainComponent } from './main/main.component';
 import { RecentRecipesListComponent } from './recent-recipes-list/recent-recipes-list.component';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -17,10 +18,12 @@ import { RecentRecipesListComponent } from './recent-recipes-list/recent-recipes
     RecentRecipesListComponent
   ],
   imports: [
+    AuthModule,
+    AppRoutingModule,
     BrowserModule,
     CoreModule,
     HttpClientModule,
-    AppRoutingModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
