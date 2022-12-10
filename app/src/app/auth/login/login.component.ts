@@ -17,6 +17,8 @@ export class LoginComponent {
     if(form.invalid){ 
       return;
     }
+   
+    
     this.authService.user={
    username:'John'
     }as any;

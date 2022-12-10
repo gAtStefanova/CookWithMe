@@ -5,7 +5,7 @@
 }
 /* fonts */
 
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600&family=Montserrat&display=swap');
+
 html {
   font-size: 100%;
 } /*16px*/
@@ -826,4 +826,16 @@ template {
 
 [hidden] {
   display: none;
+}
+
+p.error {
+  text-decoration:wavy;
+  text-align: center;
+  border-radius: 0.3em;
+  color: red;
+  padding-top: 0;
+}
+
+.input-error {
+  border-left-color: red;
 }

@@ -12,10 +12,10 @@ export class RecentRecipesListComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.apiService.loadRecipes(5).subscribe((value)=>{
-      console.log(value);
+  //  this.apiService.loadRecipes(5).subscribe((value)=>{
+   //   console.log(value);
       
-    })
+  //  })
       
   }
 }
