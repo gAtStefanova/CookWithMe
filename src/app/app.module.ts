@@ -4,21 +4,21 @@ import { CoreModule } from './core/core.module';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { RecipesListComponent } from './recipes-list/recipes-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MainComponent } from './main/main.component';
 import { RecentRecipesListComponent } from './recent-recipes-list/recent-recipes-list.component';
 import { AuthModule } from './auth/auth.module';
+import { RecipeModule } from './recipe/recipe.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    RecipesListComponent,
-    MainComponent,
+        MainComponent,
     RecentRecipesListComponent
   ],
   imports: [
     AuthModule,
+    RecipeModule,
     AppRoutingModule,
     BrowserModule,
     CoreModule,

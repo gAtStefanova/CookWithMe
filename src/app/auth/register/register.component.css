@@ -23,7 +23,7 @@ body{
     position: relative;
     max-width: 430px;
     width: 100%;
-    background-color: #fff;
+    background-color: #f0f0f0cc;
     padding: 34px;
     border-radius: 6px;
     box-shadow: 0 5px 10px #0f172a;
@@ -32,7 +32,7 @@ body{
 .container-info h2{
     margin-bottom: 25px;
     position: relative;
-    font-size: 22px;
+    font-size: 30px;
     font-weight: 600;
     color: #333;
 }

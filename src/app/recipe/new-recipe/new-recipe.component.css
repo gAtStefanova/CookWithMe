@@ -8,7 +8,8 @@
     font-family: 'Poppins',sans-serif;
 }
 #container{
-    height: 900px;
+    padding-top: 0px;
+    height: 1200px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -47,7 +48,7 @@ body{
     background: #4070f4;
 }
 .container-info form{
-    margin-top: 30px;
+    margin-top: 40px;
 
 }
 .container-info form .input-box{
