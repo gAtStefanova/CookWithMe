@@ -5,7 +5,11 @@ import { IUser } from '../interfaces/user';
   providedIn: 'root'
 })
 export class AuthService {
-user:IUser |null=null;
+
+user:IUser |null={
+  username:'John11',
+  email:'test123@gmail.bg'
+}as any;
 
 get isLoggedIn(){
   return this.user !==null;
