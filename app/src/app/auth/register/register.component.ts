@@ -23,6 +23,7 @@ form=this.fb.group({
   constructor(private fb:FormBuilder){  }
 
   registerHandler(){
+if(this.form.invalid){return;}
     
     console.log(this.form.value);
     

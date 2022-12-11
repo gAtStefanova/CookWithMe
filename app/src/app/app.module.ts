@@ -9,12 +9,14 @@ import { MainComponent } from './main/main.component';
 import { RecentRecipesListComponent } from './recent-recipes-list/recent-recipes-list.component';
 import { AuthModule } from './auth/auth.module';
 import { RecipeModule } from './recipe/recipe.module';
+import { AppImageUrlDirective } from './shared/validators/app-image-url.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
-        MainComponent,
+    MainComponent,
     RecentRecipesListComponent
+    
   ],
   imports: [
     AuthModule,
