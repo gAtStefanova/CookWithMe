@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { appEmailValidator, sameValueGroupValidator } from 'src/app/shared/validators';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-register',
@@ -20,12 +22,16 @@ form=this.fb.group({
   })
  })
 
-  constructor(private fb:FormBuilder){  }
+  constructor(private fb:FormBuilder,private authService:AuthService, private router:Router){  }
 
   registerHandler(){
 if(this.form.invalid){return;}
     
-    console.log(this.form.value);
-    
-  }
-}
+const {username,email,pass:{password,rePassword}={}}=this.form.value;
+    this.authService.register(username!,email!,password!,rePassword!)
+    .subscribe(user=>{
+      this.authService.user=user
+      this.router.navigate(['/'])
+  //  this.router.navigate(['auth/login'])
+  })
+  }}

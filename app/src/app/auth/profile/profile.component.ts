@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import {  Router } from '@angular/router';
 import { appEmailValidator } from 'src/app/shared/validators';
 import { AuthService } from '../auth.service';
 
@@ -26,7 +27,7 @@ get user(){
     email:['',[Validators.required,appEmailValidator(['bg','com'])]],
   })
 
-  constructor(private fb:FormBuilder, private authService:AuthService){ 
+  constructor(private fb:FormBuilder, private authService:AuthService,private router:Router){ 
         
     this.form.setValue(this.user)
    }
@@ -36,6 +37,9 @@ get user(){
     if(this.showEditMode){
       this.formSubmited=false;
     }
+  }
+  redirect():void{
+    this.router.navigate(['/'])
   }
 
 saveProfile():void{

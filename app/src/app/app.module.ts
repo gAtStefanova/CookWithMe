@@ -10,12 +10,15 @@ import { RecentRecipesListComponent } from './recent-recipes-list/recent-recipes
 import { AuthModule } from './auth/auth.module';
 import { RecipeModule } from './recipe/recipe.module';
 import { AppImageUrlDirective } from './shared/validators/app-image-url.directive';
+import { appInterceptorProvider } from './app.interceptor';
+import { AuthenticateComponent } from './authenticate/authenticate.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
-    RecentRecipesListComponent
+    RecentRecipesListComponent,
+    AuthenticateComponent
     
   ],
   imports: [
@@ -27,7 +30,7 @@ import { AppImageUrlDirective } from './shared/validators/app-image-url.directiv
     HttpClientModule,
 
   ],
-  providers: [],
+  providers: [appInterceptorProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -24,7 +24,6 @@
 
                 <label for="password">Password:</label>
                 <input class="input-box" #passInput="ngModel" ngModel type="password" id="password" placeholder="*****" name="password"  [minlength]="5" required>
-        {{passInput.errors | json}}
                 <ng-container *ngIf="passInput.touched">
                  
                 <p class="error" *ngIf="passInput.errors?.['required']">

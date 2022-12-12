@@ -14,14 +14,19 @@ export class LoginComponent {
   
   }
   loginHandler(form: NgForm):void{
-    if(form.invalid){ 
-      return;
-    }
+    if(form.invalid){ return; }
    
     
-    this.authService.user={
-   username:'John'
-    }as any;
+const {email,password}=form.value;
+    this.authService.login(email!,password!)
+    .subscribe(user=>{
+      
+     this.authService.user=user
+      this.router.navigate(['/'])
+    //this.router.navigate(['/'])
+  })
+    
+    
 
     const returnUrl=this.ActivatedRoute.snapshot.queryParams['returnUrl'] || '/';
 
