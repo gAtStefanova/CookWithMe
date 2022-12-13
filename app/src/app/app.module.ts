@@ -24,8 +24,8 @@ import { BehaviorSubject } from 'rxjs';
     
   ],
   imports: [
-    AuthModule,
-    RecipeModule,
+    
+    
     AppRoutingModule,
     BrowserModule,
     CoreModule,

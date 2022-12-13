@@ -35,13 +35,13 @@
             </ng-container>
 
             <label class="prep-time">Prep time:</label>
-            <input type="text" class="input-box" #prepInput="ngModel" required ngModel id="prep-time" placeholder="Prep Time..." name="prep-time"  />
+            <input type="text" class="input-box" #prepInput="ngModel" required ngModel id="prep-time" placeholder="Prep Time..." name="prepTime"  />
 
             <p class="error" *ngIf="prepInput.touched && prepInput.errors?.['required']" >Prep Time is required!</p>
 
 
             <label class="cook-time">Cook Time:</label>
-            <input type="text" class="input-box" #cookInput="ngModel" required ngModel id="cook-time" placeholder="Cook Time..." name="cook-time"  />
+            <input type="text" class="input-box" #cookInput="ngModel" required ngModel id="cook-time" placeholder="Cook Time..." name="cookTime"  />
 
             <p class="error" *ngIf="cookInput.touched && cookInput.errors?.['required']" >Cook Time is required!</p>
 

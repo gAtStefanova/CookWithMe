@@ -10,28 +10,30 @@ function newPost(text, userId, recipeId) {
             ])
         })*/
 }
-
-function getLatestsPosts(req, res, next) {/*
+/*
+function getLatestsRecipes(req, res, next) {
     const limit = Number(req.query.limit) || 0;
 
     postModel.find()
         .sort({ created_at: -1 })
         .limit(limit)
-        .populate('recipeId userId')
-        .then(posts => {
-            res.status(200).json(posts)
+        .populate('userId')
+        .then(recipes => {
+            res.status(200).json(recipes)
         })
-        .catch(next);*/
-}
+        .catch(next);
+}*/
+
 function getRecipes(req, res, next) {
     console.log(req.body);
-    /*
+    
     recipeModel.find()
         .populate('userId')
         .then(recipes => res.json(recipes))
         .catch(next);
-        */
+        
 }
+
 function createPost(req, res, next) {
     /*
     const { recipeId } = req.params;
@@ -100,19 +102,26 @@ console.log(req.body);
 }
 
 function createRecipe(req, res, next) {
-console.log(req.body);
-    /*
-    const { recipeName, postText } = req.body;
+    
+    const { title,imageUrl,description,prepTime,cookTime,ingredients} = req.body;
     const { _id: userId } = req.user;
 
-    recipeModel.create({ recipeName, userId, subscribers: [userId] })
-        .then(recipe => {
-            newPost(postText, userId, recipe._id)
-                .then(([_, updatedRecipe]) => res.status(200).json(updatedRecipe))
+    recipeModel.create({ title,imageUrl,description,prepTime,cookTime,ingredients, userId, subscribers: [userId] })
+      .then(updatedTheme =>
+        { res.status(200).json(updatedTheme)
+
         })
-        .catch(next);
-        */
+       
+        .catch(next);   
 }
+/*
+ .then(([_, updatedRecipe]) =>{
+                res.status(200).json(updatedRecipe)})
+        .then(recipe => {
+newPost(recipeImage,recipeDescription,recipePrepTime,recipeCookTime,recipeIngredients, userId, recipe._id)
+        })
+
+*/
 
 function subscribe(req, res, next) {/*
     const recipeId = req.params.RecipeId;
@@ -123,7 +132,7 @@ function subscribe(req, res, next) {/*
         })
         .catch(next);*/
 }
-
+/*
 function like(req, res, next) {
     const { recipeId } = req.params;
     const { _id: userId } = req.user;
@@ -134,11 +143,18 @@ function like(req, res, next) {
         .then(() => res.status(200).json({ message: 'Liked successful!' }))
         .catch(next)
 }
-
+*/
 module.exports = {
-    getRecipes,
+    createRecipe,
+    getRecipes
+}
+
+/*{
+    getLatestsRecipes,
+   getRecipes,
     createRecipe,
     getRecipe,
     deletePost,editPost,createPost,newPost,subscribe,
     like
 }
+*/

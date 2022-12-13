@@ -51,6 +51,12 @@ getProfile(){
       return of(err);
     }));
 }
+setProfile(username:string,email:string){
+  return this.http.put<IUser>('/api/users/profile',{username,email})
+  .pipe(
+    tap(user=>this.user$$.next(user)),
+    );
+}
 
 
 ngOnDestroy(): void {

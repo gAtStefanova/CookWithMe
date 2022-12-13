@@ -17,6 +17,7 @@ export class ApiService {
  
 
   loadRecipes(limit?:number){
-    return this.httpClient.get<IRecipe>(`apiURL/recipes${limit ? `?limit=${limit}`:''}`)
+    
+    return this.httpClient.get<IRecipe>(`${apiURL}/recipes${limit ? `?limit=${limit}`:''}`)
   }
 }

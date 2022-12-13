@@ -1,5 +1,5 @@
 const { userModel, themeModel, postModel } = require('../models');
-
+/*
 function newPost(text, userId, recipeId) {
     return postModel.create({ text, userId, themeId })
         .then(post => {
@@ -9,7 +9,8 @@ function newPost(text, userId, recipeId) {
             ])
         })
 }
-
+*/
+/*
 function getLatestsPosts(req, res, next) {
     const limit = Number(req.query.limit) || 0;
 
@@ -22,7 +23,7 @@ function getLatestsPosts(req, res, next) {
         })
         .catch(next);
 }
-
+/*
 function createPost(req, res, next) {
     const { recipeId } = req.params;
     const { _id: userId } = req.user;
@@ -32,7 +33,8 @@ function createPost(req, res, next) {
         .then(([_, updatedRecipe]) => res.status(200).json(updatedRecipe))
         .catch(next);
 }
-
+*/
+/*
 function editPost(req, res, next) {
     const { postId } = req.params;
     const { postText } = req.body;
@@ -50,7 +52,8 @@ function editPost(req, res, next) {
         })
         .catch(next);
 }
-
+*/
+/*
 function deletePost(req, res, next) {
     const { postId, recipeId } = req.params;
     const { _id: userId } = req.user;
@@ -69,7 +72,8 @@ function deletePost(req, res, next) {
         })
         .catch(next);
 }
-
+*/
+/*
 function like(req, res, next) {
     const { postId } = req.params;
     const { _id: userId } = req.user;
@@ -80,12 +84,12 @@ function like(req, res, next) {
         .then(() => res.status(200).json({ message: 'Liked successful!' }))
         .catch(next)
 }
-
+*//*
 module.exports = {
     getLatestsPosts,
-    newPost,
-    createPost,
-    editPost,
-    deletePost,
+   // newPost,
+   // createPost,
+  //  editPost,
+  //  deletePost,
     like,
-}
+}*/

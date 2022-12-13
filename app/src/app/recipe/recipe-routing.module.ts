@@ -5,9 +5,7 @@ import { RecipesListComponent } from "./recipes-list/recipes-list.component";
 
 
 const routes:Routes=[
-    {
-        path:'recipes',
-        children:[
+    
             {
         path:'catalog',
         component:RecipesListComponent
@@ -21,7 +19,7 @@ const routes:Routes=[
         component:RecipeDetailComponent
     },
 
-        ]
-    }
+        
+    
 ];
 export const RecipeRoutingModule=RouterModule.forChild(routes);

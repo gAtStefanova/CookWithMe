@@ -37,6 +37,10 @@ const recipeSchema = new mongoose.Schema(
       type: ObjectId,
       ref: "User",
     },
+    subscribers: [{
+      type: ObjectId,
+      ref: "User"
+  }],
   },
   { timestamps: { createdAt: "created_at" } }
 );
