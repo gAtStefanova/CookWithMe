@@ -8,19 +8,18 @@ import { AuthService } from '../auth/auth.service';
 })
 export class AuthenticateComponent implements OnInit {
 
-  isAuthenticating=true
+  isAuthenticating=true;
 
   constructor(private authService:AuthService){
 
   }
+
   ngOnInit(): void {
 this.authService.getProfile().subscribe({
-  next:(user)=>{
-    this.authService.user=user;
+  next:()=>{
     this.isAuthenticating=false;
   },
   error:()=>{
-    this.authService.user=null;
     this.isAuthenticating=false;
 
   }

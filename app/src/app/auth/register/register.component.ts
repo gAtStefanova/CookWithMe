@@ -30,7 +30,6 @@ if(this.form.invalid){return;}
 const {username,email,pass:{password,rePassword}={}}=this.form.value;
     this.authService.register(username!,email!,password!,rePassword!)
     .subscribe(user=>{
-      this.authService.user=user
       this.router.navigate(['/'])
   //  this.router.navigate(['auth/login'])
   })

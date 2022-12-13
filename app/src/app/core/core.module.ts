@@ -5,6 +5,7 @@ import { FooterComponent } from './footer/footer.component';
 import { AppRoutingModule } from '../app-routing.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AuthModule } from '../auth/auth.module';
+import { ErrorComponent } from './error/error.component';
 
 
 
@@ -13,6 +14,7 @@ import { AuthModule } from '../auth/auth.module';
     NavigationComponent,
     FooterComponent,
     PageNotFoundComponent,
+    ErrorComponent
     
   ],
   imports: [
@@ -25,6 +27,7 @@ import { AuthModule } from '../auth/auth.module';
     NavigationComponent,
     FooterComponent,
     PageNotFoundComponent,
+    ErrorComponent
   ]
 })
 export class CoreModule { }

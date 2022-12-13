@@ -9,16 +9,18 @@ import { MainComponent } from './main/main.component';
 import { RecentRecipesListComponent } from './recent-recipes-list/recent-recipes-list.component';
 import { AuthModule } from './auth/auth.module';
 import { RecipeModule } from './recipe/recipe.module';
-import { AppImageUrlDirective } from './shared/validators/app-image-url.directive';
 import { appInterceptorProvider } from './app.interceptor';
 import { AuthenticateComponent } from './authenticate/authenticate.component';
+import { API_ERROR} from './shared/constants';
+import { BehaviorSubject } from 'rxjs';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
     RecentRecipesListComponent,
-    AuthenticateComponent
+    AuthenticateComponent,
+    
     
   ],
   imports: [
@@ -30,7 +32,13 @@ import { AuthenticateComponent } from './authenticate/authenticate.component';
     HttpClientModule,
 
   ],
-  providers: [appInterceptorProvider],
+  providers: [
+    appInterceptorProvider,
+    {
+      provide:API_ERROR,
+      useValue:new BehaviorSubject(null)
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
