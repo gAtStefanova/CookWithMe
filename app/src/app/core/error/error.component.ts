@@ -11,8 +11,10 @@ import { API_ERROR } from 'src/app/shared/constants';
 export class ErrorComponent implements OnDestroy {
 
   apiError$=this.apiError.asObservable();
+
   constructor( @Inject(API_ERROR) private apiError:BehaviorSubject<Error | null>,
   private router:Router ){
+    
     this.apiError$.pipe(debounceTime(0), take(1),filter(val=>!val)).subscribe(()=>{
 this.router.navigate(['/']);
     })
