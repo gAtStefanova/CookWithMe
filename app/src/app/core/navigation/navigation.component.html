@@ -9,7 +9,7 @@
   <div class="nav-links">
     <a routerLink="/" class="nav-link"> home </a>
     <a routerLink="/recipes/catalog" class="nav-link"> recipes </a>
-    <a routerLink="/recipes/new" class="nav-link"> Create new recipe </a>
+    <a *ngIf="isLoggedIn" routerLink="/recipes/new" class="nav-link"> Create new recipe </a>
     <a routerLink="/about" class="nav-link"> about </a>
 
 

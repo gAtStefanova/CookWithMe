@@ -1,6 +1,8 @@
 import { IUser } from "./user";
 
 export interface IRecipe{
+    splice(arg0: number): any;
+    _id:string;
     title:string;
     imageUrl:string;
     description:string;

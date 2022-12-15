@@ -1,4 +1,4 @@
-const { recipeModel } = require('../models');
+const { recipeModel, userModel } = require('../models');
 
 function newPost(text, userId, recipeId) {
     /*
@@ -25,7 +25,6 @@ function getLatestsRecipes(req, res, next) {
 }*/
 
 function getRecipes(req, res, next) {
-    console.log(req.body);
     
     recipeModel.find()
         .populate('userId')
@@ -84,21 +83,23 @@ function deletePost(req, res, next) {
 }
 
 
-function getRecipe(req, res, next) {
-console.log(req.body);
-    
-   /* const { recipeId } = req.params;
 
+
+function getRecipe(req, res, next) {
+    const { recipeId } = req.params;
     recipeModel.findById(recipeId)
-        .populate({
+       /* .populate({
             path : 'posts',
             populate : {
               path : 'userId'
             }
-          })
-        .then(recipe => res.json(recipe))
+          })*/
+        .then(recipe => {
+            res.status(200).json(recipe)
+            
+        })
         .catch(next);
-        */
+        
 }
 
 function createRecipe(req, res, next) {
@@ -106,32 +107,53 @@ function createRecipe(req, res, next) {
     const { title,imageUrl,description,prepTime,cookTime,ingredients} = req.body;
     const { _id: userId } = req.user;
 
-    recipeModel.create({ title,imageUrl,description,prepTime,cookTime,ingredients, userId, subscribers: [userId] })
-      .then(updatedTheme =>
-        { res.status(200).json(updatedTheme)
+    recipeModel.create({ title,imageUrl,description,prepTime,cookTime,ingredients, userId, subscribers: [] })
+      .then(theme=>{
+        userModel.findByIdAndUpdate({_id:userId},{$addToSet:{recipes:theme._id}},{ new: true })
+        .then(updatedTheme =>
+            { res.status(200).json(updatedTheme)
+    
+            })
+      })
+          
+        .catch(next); 
 
-        })
-       
-        .catch(next);   
 }
-/*
- .then(([_, updatedRecipe]) =>{
-                res.status(200).json(updatedRecipe)})
-        .then(recipe => {
-newPost(recipeImage,recipeDescription,recipePrepTime,recipeCookTime,recipeIngredients, userId, recipe._id)
-        })
 
-*/
 
-function subscribe(req, res, next) {/*
+function subscribe(req, res, next) {
     const recipeId = req.params.RecipeId;
     const { _id: userId } = req.user;
     recipeModel.findByIdAndUpdate({ _id: recipeId }, { $addToSet: { subscribers: userId } }, { new: true })
         .then(updatedRecipe => {
             res.status(200).json(updatedRecipe)
         })
-        .catch(next);*/
+        .catch(next);
 }
+function deleteRecipe(req, res, next) {
+    console.log(req);
+    //  const { postId, recipeId } = req.params;
+      
+      const {  recipeId } = req.params;
+      const { _id: userId } = req.user;
+   
+  
+  
+      Promise.all([
+        //  postModel.findOneAndDelete({ _id: postId, userId }),
+          userModel.findOneAndUpdate({ _id: userId }, { $pull: { recipes: recipeId } }),
+          recipeModel.findByIdAndDelete({ _id: recipeId }),
+      ])
+          .then(([deletedOne, _, __]) => {
+              if (deletedOne) {
+                  res.status(200).json(deletedOne)
+              } else {
+                  res.status(401).json({ message: `Not allowed!` });
+              }
+          })
+          .catch(next);
+  }
+  
 /*
 function like(req, res, next) {
     const { recipeId } = req.params;
@@ -146,7 +168,10 @@ function like(req, res, next) {
 */
 module.exports = {
     createRecipe,
-    getRecipes
+    getRecipes,
+    getRecipe,
+    subscribe,
+    deleteRecipe,
 }
 
 /*{

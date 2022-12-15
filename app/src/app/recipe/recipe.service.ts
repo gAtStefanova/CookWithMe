@@ -1,6 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 import { IRecipe } from '../interfaces';
+
+
+const apiURL=environment.apiURL
 
 @Injectable({
   providedIn: 'root'
@@ -9,15 +13,13 @@ export class RecipeService {
 
   constructor(private http:HttpClient) { }
 
-getAllThemes(){
-return this.http.get<IRecipe[]>('/api/recipes');
+getAllRecipes(){
+return this.http.get<IRecipe[]>(`${apiURL}/recipes/`);
 }
-getRecentThemes(limit?:number){
-  return this.http.get<IRecipe[]>(`/api/recipes?limit=5`);
-  }
 
-  getRecipe(id:string){
-return this.http.get<IRecipe>(`/api/recipes/${id}`);
+
+getRecipe(id:string){
+return this.http.get<IRecipe>(`${apiURL}/recipes/detail/${id}`);
   }
 
   createRecipe(title:string,imageUrl:string, description:string,prepTime:string,cookTime:string,ingredients:string){
@@ -30,8 +32,8 @@ return this.http.get<IRecipe>(`/api/recipes/${id}`);
         return this.http.put<IRecipe>(`/api/recipes/${id}`,{recipeTitle:title,recipeImage:imageUrl,recipeDescription:description,recipePrepTime:prepTime,recipeCookTime:cookTime,recipeIngredients:ingredients});
           }
 
-  deleteRecipe(id:string){
-        return this.http.delete<IRecipe>(`/api/recipes/detail${id}`);
+  deleteRecipe(recipeId:string){
+        return this.http.delete<IRecipe>(`${apiURL}/recipes/detail/delete/${recipeId}`);
        }
 
   

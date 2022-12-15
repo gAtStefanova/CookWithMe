@@ -47,11 +47,13 @@ saveProfile():void{
   if(this.form.invalid){return}
 
   const {username,email}=this.form.value
-this.authService.user={
-username,
-email
-}as any;
+//this.authService.user={username,email}as any;
 
+this.authService.setProfile(username!,email!).subscribe(
+  user=>{
+    this.router.navigate(['/auth/profile'])
+  }
+)
   this.toggleEditMode();
   
 }

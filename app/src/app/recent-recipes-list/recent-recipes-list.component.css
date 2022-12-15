@@ -25,6 +25,8 @@ margin-left: auto;
  
 }
 .recipe-img {
+  height: 250px;
+  width: 250px;
   height: 15rem;
   border-radius: var(--borderRadius);
   margin-bottom: 1rem;

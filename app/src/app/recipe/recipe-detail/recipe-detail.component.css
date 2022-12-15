@@ -104,6 +104,18 @@
     color: var(--primary-500);
     text-transform: capitalize;
   }
+
+
+  .second-column button {
+    color: #645cff(186, 82, 181);
+    margin: 0.5em 0.5em;
+    padding: 0.02em 1em;
+    border: 1px solid;
+    border-radius: 0.3em;
+}
+.second-column button:hover {
+  cursor: pointer;
+}
   .page {
     display: block;
     width: 90vw;

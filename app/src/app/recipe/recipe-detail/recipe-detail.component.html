@@ -1,17 +1,25 @@
 <main class="page">
-    <div class="recipe-page">
+    <div class="recipe-page" >
       <section class="recipe-content">
-        <img
-          src="./assets/recipes/recipe-4.jpeg"
+        <img src="{{recipeDetails?.imageUrl}}"
           class="img recipe-hero-img"
         />
         <article class="second-column">
             <div>
               <h4>ingredients</h4>
-              <p class="single-ingredient">1 1/2 cups dry pancake mix</p>
-              <p class="single-ingredient">1/2 cup flax seed meal</p>
-              <p class="single-ingredient">1 cup skim milk</p>
-            </div>
+              <p class="single-ingredient">{{recipeDetails?.ingredients}}</p>
+              </div>
+              <h4>
+                <ng-container *ngIf="isCreator">
+                <button>Edit</button>
+                <button (click)="deleteRecipe()">Delete</button>
+              </ng-container>
+              <ng-container *ngIf="!isCreator">
+                <button>Add to favoutite</button>
+              </ng-container>
+                
+
+              </h4>
                       </article>
         <article class="recipe-info">
          
@@ -19,12 +27,17 @@
             <article>
               <i class="fas fa-clock"></i>
               <h5>prep time</h5>
-              <p>30 min.</p>
+              <p>{{recipeDetails?.prepTime}}</p>
             </article>
             <article>
               <i class="far fa-clock"></i>
               <h5>cook time</h5>
-              <p>15 min.</p>
+              <p>{{recipeDetails?.cookTime}}</p>
+            </article>
+            <article>
+              <i class="fas fa-heart"></i>
+              <h5>Added to favourites</h5>
+<p>{{([recipeDetails?.subscribers].length)}}</p>
             </article>
             
           </div>
@@ -34,26 +47,9 @@
       <!-- content -->
       <section class="recipe-content">
         <article>
-          <h2>Banana Pancakes</h2>
-          <p>
-            Shabby chic humblebrag banh mi bushwick, banjo kale chips
-            meggings. Cred selfies sartorial, cloud bread disrupt blue bottle
-            seitan. Dreamcatcher tousled bitters, health goth vegan venmo
-            whatever street art lyft shabby chic pitchfork beard. Drinking
-            vinegar poke tbh, iPhone coloring book polaroid truffaut tousled
-            ramps pug trust fund letterpress. Portland four loko austin
-            chicharrones bitters single-origin coffee. Leggings letterpress
-            occupy pour-over.
-          </p>
-          <!-- single instruction -->
-          
-          <!-- end of single instruction -->
-          <!-- single instruction -->
-          
-          <!-- end of single instruction -->
-          <!-- single instruction -->
-          
-          <!-- end of single instruction -->
+          <h2>{{recipeDetails?.title}}</h2>
+          <p>{{recipeDetails?.description}}</p>
+        
         </article>
         
 

@@ -67,6 +67,8 @@ html {
 body {
   background: var(--backgroundColor);
   font-family: var(--bodyFont);
+  min-height: 120vh;
+  margin: 0 auto;
   font-weight: 400;
   line-height: 1.75;
   color: var(--textColor);
