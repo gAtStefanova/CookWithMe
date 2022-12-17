@@ -27,9 +27,9 @@ return this.http.get<IRecipe>(`${apiURL}/recipes/detail/${id}`);
     return this.http.post<IRecipe>(`/api/recipes/`,{title:title,imageUrl:imageUrl,description:description,prepTime:prepTime,cookTime:cookTime,ingredients:ingredients});
       }
 
-  updateRecipe(id:string,title:string,imageUrl:string, description:string,prepTime:string,cookTime:string,
+  updateRecipe(userid:any,title:string,imageUrl:string, description:string,prepTime:string,cookTime:string,
         ingredients:string){
-        return this.http.put<IRecipe>(`/api/recipes/${id}`,{recipeTitle:title,recipeImage:imageUrl,recipeDescription:description,recipePrepTime:prepTime,recipeCookTime:cookTime,recipeIngredients:ingredients});
+        return this.http.put<IRecipe>(`/api/recipes/detail/edit`,{recipeTitle:title,recipeImage:imageUrl,recipeDescription:description,recipePrepTime:prepTime,recipeCookTime:cookTime,recipeIngredients:ingredients,userid:userid});
           }
 
   deleteRecipe(recipeId:string){

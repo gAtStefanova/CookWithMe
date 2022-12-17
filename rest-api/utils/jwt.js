@@ -12,6 +12,7 @@ function verifyToken(token) {
                 reject(err);
                 return;
             }
+           
             resolve(data);
         });
     });

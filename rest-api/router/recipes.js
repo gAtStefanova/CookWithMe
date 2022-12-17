@@ -9,13 +9,14 @@ router.get('/', recipeController.getRecipes);
 router.post('/', auth(), recipeController.createRecipe);
 
 router.get('/detail/:recipeId', recipeController.getRecipe);
-router.put('/detail/:recipeId', auth(), recipeController.subscribe);
+//router.put('/detail/:recipeId', auth(), recipeController.subscribe);
 
-router.delete('/detail/delete/:recipeId', auth(), recipeController.deleteRecipe);
+router.delete('/detail/delete/:recipeId', recipeController.deleteRecipe);
+router.put('/detail/edit', recipeController.editRecipe);
 
 //router.post('/:recipeId', auth(), postController.createPost);
-//router.put('/:recipeId/posts/:postId', auth(), postController.editPost);
 
 // router.get('/my-trips/:id/reservations', auth(), recipeController.getReservations);
 
 module.exports = router
+

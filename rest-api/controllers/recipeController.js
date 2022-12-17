@@ -1,5 +1,23 @@
 const { recipeModel, userModel } = require('../models');
 
+
+function createRecipe(req, res, next) {
+    
+    const { title,imageUrl,description,prepTime,cookTime,ingredients} = req.body;
+    const { _id: userId } = req.user;
+
+    recipeModel.create({ title,imageUrl,description,prepTime,cookTime,ingredients, userId, subscribers: [] })
+      .then(theme=>{
+        userModel.findByIdAndUpdate({_id:userId},{$addToSet:{recipes:theme._id}},{ new: true })
+        .then(updatedTheme =>
+            { res.status(200).json(updatedTheme)
+    
+            })
+      })
+          
+        .catch(next); 
+
+}
 function newPost(text, userId, recipeId) {
     /*
     return postModel.create({ text, userId, recipeId })
@@ -43,23 +61,24 @@ function createPost(req, res, next) {
         .then(([_, updatedRecipe]) => res.status(200).json(updatedRecipe))
         .catch(next);*/
 }
-function editPost(req, res, next) {
-    /*
-    const { postId } = req.params;
-    const { postText } = req.body;
-    const { _id: userId } = req.user;
+function editRecipe(req, res, next) {
+    console.log(req.params);
+    console.log('here: '+ req.body);
+ //   const { postId } = req.params;
+   // const { postText } = req.body;
+  // const { _id: userId } = req.user;
 
     // if the userId is not the same as this one of the post, the post will not be updated
-    postModel.findOneAndUpdate({ _id: postId, userId }, { text: postText }, { new: true })
-        .then(updatedPost => {
-            if (updatedPost) {
-                res.status(200).json(updatedPost);
-            }
-            else {
-                res.status(401).json({ message: `Not allowed!` });
-            }
-        })
-        .catch(next);*/
+ //   postModel.findOneAndUpdate({ _id: postId, userId }, { text: postText }, { new: true })
+ //       .then(updatedPost => {
+   //         if (updatedPost) {
+   //             res.status(200).json(updatedPost);
+  //          }
+   //         else {
+  //              res.status(401).json({ message: `Not allowed!` });
+   //         }
+   //     })
+  //      .catch(next);
 }
 
 function deletePost(req, res, next) {
@@ -102,24 +121,6 @@ function getRecipe(req, res, next) {
         
 }
 
-function createRecipe(req, res, next) {
-    
-    const { title,imageUrl,description,prepTime,cookTime,ingredients} = req.body;
-    const { _id: userId } = req.user;
-
-    recipeModel.create({ title,imageUrl,description,prepTime,cookTime,ingredients, userId, subscribers: [] })
-      .then(theme=>{
-        userModel.findByIdAndUpdate({_id:userId},{$addToSet:{recipes:theme._id}},{ new: true })
-        .then(updatedTheme =>
-            { res.status(200).json(updatedTheme)
-    
-            })
-      })
-          
-        .catch(next); 
-
-}
-
 
 function subscribe(req, res, next) {
     const recipeId = req.params.RecipeId;
@@ -131,17 +132,11 @@ function subscribe(req, res, next) {
         .catch(next);
 }
 function deleteRecipe(req, res, next) {
-    console.log(req);
     //  const { postId, recipeId } = req.params;
-      
-      const {  recipeId } = req.params;
-      const { _id: userId } = req.user;
-   
-  
-  
-      Promise.all([
+            const {  recipeId } = req.params;
+            Promise.all([
         //  postModel.findOneAndDelete({ _id: postId, userId }),
-          userModel.findOneAndUpdate({ _id: userId }, { $pull: { recipes: recipeId } }),
+        //  userModel.findOneAndUpdate({ _id: userId }, { $pull: { recipes: recipeId } }),
           recipeModel.findByIdAndDelete({ _id: recipeId }),
       ])
           .then(([deletedOne, _, __]) => {
@@ -172,6 +167,7 @@ module.exports = {
     getRecipe,
     subscribe,
     deleteRecipe,
+    editRecipe
 }
 
 /*{

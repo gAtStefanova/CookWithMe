@@ -11,7 +11,7 @@
               </div>
               <h4>
                 <ng-container *ngIf="isCreator">
-                <button>Edit</button>
+                <button routerLink="/recipes/detail/edit/{{recipeDetails?._id}}">Edit</button>
                 <button (click)="deleteRecipe()">Delete</button>
               </ng-container>
               <ng-container *ngIf="!isCreator">
